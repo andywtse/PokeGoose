@@ -13,17 +13,17 @@ PokeGoose is a web application for users to build their best and favorite Pokemo
 
 ### [Trello Board](https://trello.com/b/bXOqQEX9/sei-unit-2-project)
 
-![Trello](https://imgur.com/PBB8Du1)
+![Trello](https://i.imgur.com/PBB8Du1.png)
 
 ### [Wireframe](https://whimsical.com/sei-wireframe-unit-2-diagram-9HF4LYZ9a67EzJ5Ua5ihZA)
 
-![Trello](https://imgur.com/Ya84ipE)
+![Wireframe](https://i.imgur.com/Ya84ipE.png)
 
-![Trello](https://imgur.com/5AN8UKI)
+![Wireframe](https://i.imgur.com/5AN8UKI.png)
 
 ### [Entity Relationship Diagram](https://whimsical.com/sei-wireframe-unit-2-erd-NpbSFYVaz6ZFAspSHQtGfC)
 
-![Trello](https://imgur.com/Ot0feq6)
+![ERD](https://i.imgur.com/Ot0feq6.png)
 
 ---
 
