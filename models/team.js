@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const pokemonSchema = new Schema({
+const pokemonSchema = new mongoose.Schema({
   name: { type: String, required: true},
   icon: String,
   move1: {type: String, required: true},
