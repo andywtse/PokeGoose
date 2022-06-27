@@ -1,11 +1,22 @@
 import mongoose from "mongoose";
 
+const pokemonSchema = new Schema({
+  name: { type: String, required: true},
+  icon: String,
+  move1: {type: String, required: true},
+  move2: String,
+  move3: String,
+  move4: String
+},{
+  timestamps: true
+});
+
 const teamSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: 'Profile' },
   title: { type: String, required: true},
   description: String,
   pokemon: {
-    type:[ { type: mongoose.Schema.Types.ObjectId, ref: 'Pokemon' } ],
+    type:[ pokemonSchema ],
     validate: [arrayLimit, 'Team exceeds the limit of 6 pokemon']
   }
 },{
