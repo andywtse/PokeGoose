@@ -8,7 +8,12 @@ function update(req,res) {
 
 };
 
+function show(req,res) {
+
+};
+
 export {
   index,
   update,
+  show
 }
