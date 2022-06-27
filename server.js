@@ -2,6 +2,7 @@ import 'dotenv/config.js'
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { passUserToView } from './middleware/middleware.js'
 import createError from 'http-errors'
 import session from 'express-session'
 import logger from 'morgan'
@@ -29,6 +30,7 @@ app.set(
 app.set('view engine', 'ejs')
 
 // middleware
+app.use(passUserToView);
 app.use(methodOverride('_method'))
 app.use(logger('dev'))
 app.use(express.json())
