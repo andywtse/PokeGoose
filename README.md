@@ -1,6 +1,6 @@
 # PokeGoose
 
-[Let's make a team!](https://pokegoose.heroku.app/)
+[Let's make a team!](https://pokegoose.herokuapp.com/)
 
 PokeGoose is a web application for users to build their best and favorite Pokemon team composition.
 
