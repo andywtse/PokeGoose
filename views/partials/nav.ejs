@@ -4,6 +4,9 @@
 </head>
 <body>
   <nav>
+    <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>> Home</a>
+    <a href="/community" <%- title === 'Community' ? 'class="active"' : '' %>> Community</a>
+    <a href="/teams" <%- title === 'Teams' ? 'class="active"' : '' %>> Teams</a>
     <% if (user) { %>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
