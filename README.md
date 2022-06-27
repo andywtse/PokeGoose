@@ -4,6 +4,8 @@
 
 PokeGoose is a web application for users to build their best and favorite Pokemon team composition.
 
+Powered by [PokeAPI](https://pokeapi.co/)
+
 - Application Screenshots here
 
 ---
