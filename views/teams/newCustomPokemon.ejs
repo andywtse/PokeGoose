@@ -1,0 +1,30 @@
+<%- include('../partials/html-head') %>
+  <%- include('../partials/nav') %>
+
+<main>
+  <h1>
+    <%= title %>
+  </h1>
+  <section class="section-container">
+    <form id="new-team-form" action="/teams" method="POST">
+      <section class="section-container box-pokemon">
+
+        <label for="pokemon-name-select" class="form-label">Pokemon:</label>
+        <input name="name" class="form-control" id="pokemon-name-select" list="pokemon-name-dlo"
+          placeholder="Type to search...">
+        <datalist id="pokemon-name-dlo">
+          <% pokemons.forEach(pokemon=> { %>
+            <option value="<%= pokemon.name %>">
+              <% }) %>
+        </datalist>
+
+        <label for="pokemon-moves-input<%=i%>" class="form-label">Moves:</label>
+        <input type="text" name="moves" id="pokemon-moves-input<%=i%>"
+          placeholder="Enter up to 4 moves separated by commas (,)">
+      </section>
+    </form>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
+  </section>
