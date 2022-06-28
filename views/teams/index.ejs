@@ -1,0 +1,62 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %> </h1>
+
+  <section class="section-container t-box1">
+    <h2>My Favorites</h2>
+    <% if (myFavorites.length !== 0 ) { %> 
+    <div class="card-container">
+      <% myFavorites.forEach(favorite => { %>
+        <a href="/teams/<%= favorite._id %>">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= team.title %> </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <% favorite.pokemon?.forEach(pokemon => { %>
+                  <img src="<%= pokemon.icon%>" alt="<%= pokemon.name %>">
+                <% }) %>
+              </h6>
+              <p class="card-text">
+                <%= myFavorite.description %> 
+              </p>
+            </div>
+          </div>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p> You currently have no favorites. Try favoriting some teams! </p>
+    <% } %>
+    </div>
+  </section>
+
+  <section class="section-container t-box-2">
+    <h2>My Teams</h2>
+    <% if (myTeam.length !== 0 ) { %> 
+    <div class="card-container">
+      <% myTeam.forEach(team => { %>
+        <a href="/teams/<%= team._id %>">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= team.title %> </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <% team?.forEach(pokemon => { %>
+                  <img src="<%= pokemon.icon%>" alt="<%= pokemon.name %>">
+                <% }) %>
+              </h6>
+              <p class="card-text">
+                <%= myTeam.description %> 
+              </p>
+            </div>
+          </div>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p> You currently have no teams. Let's make one! </p>
+    <% } %>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

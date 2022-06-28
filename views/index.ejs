@@ -2,17 +2,72 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <section class="section-container">
-    <h1><%= title %> </h1>
-    <<% if (teams.length !== 0 ) { %> 
+  <h1><%= title %> </h1>
+  <section class="section-container box1">
+    <h2> Community </h2>
+    <% if (allTeams.length !== 0 ) { %> 
     <div class="card-container">
-      <% teams.forEach(team => { %>
+      <% allTeams.forEach(team => { %>
         <a href="/teams/<%= team._id %>">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title"><%= team.title %> </h5>
               <h6 class="card-subtitle mb-2 text-muted">
-                <% pokemons?.forEach(pokemon => { %>
+                <% teams.pokemon?.forEach(pokemon => { %>
+                  <img src="<%= pokemon.icon%>" alt="<%= pokemon.name %>">
+                <% }) %>
+              </h6>
+              <p class="card-text">
+                <%= team.description %> 
+              </p>
+            </div>
+          </div>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p> There is currently no items </p>
+    <% } %>
+    </div>
+  </section>
+
+  <section class="section-container box2">
+    <h2> My Favorites </h2>
+    <% if (favorites.length !== 0 ) { %> 
+    <div class="card-container">
+      <% favorites.forEach(team => { %>
+        <a href="/teams/<%= team._id %>">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= team.title %> </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <% teams.pokemon?.forEach(pokemon => { %>
+                  <img src="<%= pokemon.icon%>" alt="<%= pokemon.name %>">
+                <% }) %>
+              </h6>
+              <p class="card-text">
+                <%= team.description %> 
+              </p>
+            </div>
+          </div>
+        </a>
+      <% }) %>
+    <% } else { %>
+      <p> There is currently no items </p>
+    <% } %>
+    </div>
+  </section>
+
+  <section class="section-container box3">
+    <h2> My Teams </h2>
+    <% if (myTeams.length !== 0 ) { %> 
+    <div class="card-container">
+      <% myTeams.forEach(team => { %>
+        <a href="/teams/<%= team._id %>">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= team.title %> </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <% teams.pokemon?.forEach(pokemon => { %>
                   <img src="<%= pokemon.icon%>" alt="<%= pokemon.name %>">
                 <% }) %>
               </h6>

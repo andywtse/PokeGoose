@@ -34,7 +34,6 @@ app.set(
 app.set('view engine', 'ejs')
 
 // middleware
-app.use(passUserToView);
 app.use(methodOverride('_method'))
 app.use(logger('dev'))
 app.use(express.json())
@@ -60,6 +59,8 @@ app.use(
 // passport middleware
 app.use(passport.initialize())
 app.use(passport.session())
+
+app.use(passUserToView);
 
 // router middleware
 app.use('/', indexRouter)

@@ -5,7 +5,7 @@ const profileSchema = new mongoose.Schema({
   avatar: String,
   description: String,
   favorites: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Team' } ],
-  myTeam: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Team' } ]
+  myTeams: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Team' } ]
 }, {
   timestamps: true
 })
