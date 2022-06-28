@@ -48,6 +48,10 @@ function newTeam(req, res) {
   });
 };
 
+function newPokemon(req,res) {
+
+};
+
 function create(req, res) {
   req.body.owner = req.user.profile._id;
   Team.create(req.body)
@@ -57,7 +61,7 @@ function create(req, res) {
         profile.myTeams.push(team._id);
         profile.save();
       })
-    res.render(`teams/${team._id}`);
+    res.redirect(`/teams/${team._id}`);
   })
   .catch(err => {
     console.log(err)
@@ -65,16 +69,32 @@ function create(req, res) {
   });
 };
 
+function createPokemon(req,res) {
+
+};
+
 function show(req, res) {
   Team.findById(req.params.id)
   .populate('pokemon')
   .then( team => {
+    let isSelf = false;
+    if(typeof req.user !== 'undefined'){
+      isSelf = team.owner.equals(req.user.profile._id)
+    }
     CustomPokemon.find({})
     .then(custom => {
+
+      let customList = [];
+
+      if( typeof custom !== 'undefined' ) {
+        customList = custom;
+      }
+
       res.render('teams/show', {
         title: "Team Detail",
-        custom,
-        team
+        custom: customList,
+        team,
+        isSelf
       });
     })
     .catch(err => {
@@ -97,9 +117,17 @@ function update(req, res) {
 };
 
 function deleteTeam(req, res) {
-  Team.findByIdAndDelete(req.params.id)
-  .then(()=>{
-    res.redirect('/teams');
+  Team.findById(req.params.id)
+  .then(team => {
+    if (team.owner.equals(req.user.profile._id)){
+      team.delete()
+      .then(()=>{
+        res.redirect('/teams');
+      })
+    } else {
+      throw new Error ('NOT AUTHORIZED');
+    }
+    
   })
   .catch(err => {
     console.log(err)
@@ -137,7 +165,9 @@ function deleteTeam(req, res) {
 export {
   index,
   newTeam as new,
+  newPokemon,
   create,
+  createPokemon,
   show,
   edit,
   update,

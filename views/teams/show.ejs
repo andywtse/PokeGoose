@@ -6,11 +6,39 @@
 
   <section class="section-container">
       <section class="section-container box-title-desc">
-        <label for="title-input">Title:</label>
-        <input type="text" name="title" id="input-title" value="<%= teamTitle %>" placeholder="Enter a title...">
-        <label for="title-input">Description:</label>
-        <input type="text" name="title" id="input-title" value="<%= teamDesc %>" placeholder="Enter a description...">
-        <button type="submit">Create Team</button>
+        <h3><%= team.title %> </h3>
+        <h5><%= team.description %> </h>
+        <% if (isSelf) { %>
+          <a href="/teams/<%= team._id %>/edit">
+            <button>Edit Flight</button>
+          </a>
+        <% } %>
+      </section>
+      <section class="section-container box-pokemon">
+          <% if (custom.length !== 0 ) { %>
+          <div class="card-container">
+            <% custom.forEach(custom => { %>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="<%= custom.icon %>" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= custom.name %> </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">
+                      <ul>
+                      <% custom.moves.forEach(move => { %>
+                        <li><%= move %> </li>
+                      <% }) %>
+                    </ul>
+                    </h6>
+                    <p class="card-text">
+                      <%= team.description %> 
+                    </p>
+                  </div>
+                </div>
+            <% }) %>
+          <% } else { %>
+            <p> There is currently no items </p>
+          <% } %>
+          </div>
       </section>
     </form>
   </section>
