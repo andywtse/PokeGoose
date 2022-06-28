@@ -21,6 +21,9 @@
               <p class="card-text">
                 <%= myFavorite.description %> 
               </p>
+              <form action="/teams/<%= favorite._id %>?_method=DELETE" method="post">
+                <button class="btn btn-primary">Remove</button>
+              </form>
             </div>
           </div>
         </a>
@@ -32,7 +35,14 @@
   </section>
 
   <section class="section-container t-box-2">
-    <h2>My Teams</h2>
+    
+    <div class="box-bar">
+      <h2>My Teams</h2>
+      <a href="/teams/new">
+        <button>Create Team</button>
+      </a>
+    </div>
+    
     <% if (myTeam.length !== 0 ) { %> 
     <div class="card-container">
       <% myTeam.forEach(team => { %>
@@ -48,6 +58,9 @@
               <p class="card-text">
                 <%= myTeam.description %> 
               </p>
+              <form action="/teams/<%= team._id %>?_method=DELETE" method="post">
+                <button class="btn btn-primary">Remove</button>
+              </form>
             </div>
           </div>
         </a>
