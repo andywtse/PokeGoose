@@ -4,6 +4,7 @@
 <main>
   <section class="section-container">
     <h1><%= title %> </h1>
+    <<% if (teams.length !== 0 ) { %> 
     <div class="card-container">
       <% teams.forEach(team => { %>
         <a href="/teams/<%= team._id %>">
@@ -22,6 +23,9 @@
           </div>
         </a>
       <% }) %>
+    <% } else { %>
+      <p> There is currently no items </p>
+    <% } %>
     </div>
   </section>
 </main>
