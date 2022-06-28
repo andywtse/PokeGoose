@@ -78,7 +78,8 @@ function show(req, res) {
   .populate('pokemon')
   .then( team => {
     let isSelf = false;
-    if(typeof req.user !== 'undefined'){
+    let user = typeof req.user !== 'undefined'
+    if(user){
       isSelf = team.owner.equals(req.user.profile._id)
     }
     CustomPokemon.find({})
@@ -90,12 +91,17 @@ function show(req, res) {
         customList = custom;
       }
 
-      res.render('teams/show', {
-        title: "Team Detail",
-        custom: customList,
-        team,
-        isSelf
-      });
+      Profile.findById(team.owner)
+      .then(profile => {
+        res.render('teams/show', {
+          title: "Team Detail",
+          custom: customList,
+          team,
+          profile,
+          isSelf,
+          user
+        });
+      })
     })
     .catch(err => {
       console.log(err)

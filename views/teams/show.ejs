@@ -10,8 +10,23 @@
         <h5><%= team.description %> </h>
         <% if (isSelf) { %>
           <a href="/teams/<%= team._id %>/edit">
-            <button>Edit Flight</button>
+            <button>Edit Team Description</button>
           </a>
+        <% }  else if (user) { %>
+          <a href="/teams/<%= team._id %>/">
+            <button>Add to Favorites</button>
+          </a>
+        <% } %>
+        <% if (!isSelf && profile.avatar) { %>
+          <div>
+            <a href="/profiles/<%= team.owner %>">
+              <img
+              class="profile-avatar"
+              src="<%= profile.avatar %>"
+              alt="<%= profile.name %>'s avatar"
+            >
+            </a>
+          </div>
         <% } %>
       </section>
       <section class="section-container box-pokemon">
@@ -36,7 +51,7 @@
                 </div>
             <% }) %>
           <% } else { %>
-            <p> There is currently no items </p>
+            <p> There are currently no items </p>
           <% } %>
           </div>
       </section>
