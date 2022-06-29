@@ -16,23 +16,21 @@ router.get('/:id', teamController.show);
 // GET pokegoose.herokuapp.com/teams/:id/edit
 router.get('/:id/edit', isLoggedIn, teamController.edit);
 
-// GET pokegoose.herokuapp.com/teams/new
-router.get('/:id/pokemon/new', isLoggedIn, teamController.newPokemon);
-
-// // GET pokegoose.herokuapp.com/teams/:id/:pokemonId/edit
-// router.get('/:id/:pokemonId/edit', isLoggedIn, teamController.editPokemon);
-
-// GET pokegoose.herokuapp.com/teams
+// POST pokegoose.herokuapp.com/teams
 router.post('/', isLoggedIn, teamController.create);
 
-// GET pokegoose.herokuapp.com/teams/:id/pokemons
-router.get('/:id/pokemons', isLoggedIn, teamController.createPokemon);
+// POST pokegoose.herokuapp.com/teams/:id/pokemons
+router.post('/:id/pokemons', isLoggedIn, teamController.createPokemon);
 
-// GET pokegoose.herokuapp.com/teams/:id
+// PUT pokegoose.herokuapp.com/teams
+router.put('/:id', isLoggedIn, teamController.update);
+
+// DELETE pokegoose.herokuapp.com/teams/:id
 router.delete('/:id', isLoggedIn, teamController.delete);
 
-// GET pokegoose.herokuapp.com/teams
-router.put('/:id', isLoggedIn, teamController.index);
+// DELETE pokegoose.herokuapp.com/teams/:id
+router.delete('/:id/pokemons/:pokemonId', isLoggedIn, teamController.deletePokemon);
+
 
 
 export {

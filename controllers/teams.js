@@ -48,10 +48,6 @@ function newTeam(req, res) {
   });
 };
 
-function newPokemon(req,res) {
-
-};
-
 function create(req, res) {
   req.body.owner = req.user.profile._id;
   Team.create(req.body)
@@ -70,7 +66,25 @@ function create(req, res) {
 };
 
 function createPokemon(req,res) {
-
+  Pokemon.find({name:req.body.name})
+    .then( poke =>{
+      req.body.icon = poke[0].icon;
+      CustomPokemon.create(req.body)
+      .then( pokemon => {
+        Team.findById(req.params.id)
+          .then(team=> {
+            team.pokemon.push(pokemon);
+            team.save()
+            .then(()=>{
+              res.redirect(`/teams/${team._id}`);
+            })
+          })
+        })
+      })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/teams/index')
+  });
 };
 
 function show(req, res) {
@@ -82,31 +96,22 @@ function show(req, res) {
     if(user){
       isSelf = team.owner.equals(req.user.profile._id)
     }
-    CustomPokemon.find({})
-    .then(custom => {
-
-      let customList = [];
-
-      if( typeof custom !== 'undefined' ) {
-        customList = custom;
-      }
-
-      Profile.findById(team.owner)
-      .then(profile => {
+    Profile.findById(team.owner)
+    .then(profile => {
+      Pokemon.find({})
+      .then(list=>{
         res.render('teams/show', {
           title: "Team Detail",
-          custom: customList,
           team,
+          pokemons: team.pokemon,
+          list,
           profile,
           isSelf,
           user
-        });
+        })
+
       })
     })
-    .catch(err => {
-      console.log(err)
-      indexController.index;
-    });
   })
   .catch(err => {
     console.log(err)
@@ -115,11 +120,28 @@ function show(req, res) {
 };
 
 function edit(req, res) {
-
+  Team.findById(req.params.id)
+  .then(team => {
+    res.render('teams/edit', {
+      title: "Edit Teams",
+      team
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    indexController.index;
+  });
 };
 
 function update(req, res) {
-
+  Team.findByIdAndUpdate(req.params.id,req.body,{new:true})
+  .then(team=>{
+    res.redirect(`/teams/${team._id}`);
+  })
+  .catch(err => {
+    console.log(err)
+    indexController.index;
+  });
 };
 
 function deleteTeam(req, res) {
@@ -140,6 +162,22 @@ function deleteTeam(req, res) {
     indexController.index;
   });
 };
+
+function deletePokemon(req,res) {
+  Team.findById(req.params.id)
+  .then(team=>{
+    team.pokemon.remove({_id:req.params.pokemonId});
+    team.save().
+    then(()=>{
+      res.redirect(`/teams/${team._id}`);
+    })
+    
+  })
+  .catch(err => {
+    console.log(err)
+    indexController.index;
+  });
+}
 
 // function scrapePokemon() {
 //   for (let i = 0; i < 1154; i++) {
@@ -171,11 +209,11 @@ function deleteTeam(req, res) {
 export {
   index,
   newTeam as new,
-  newPokemon,
   create,
   createPokemon,
   show,
   edit,
   update,
   deleteTeam as delete,
+  deletePokemon
 }

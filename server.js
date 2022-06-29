@@ -21,7 +21,6 @@ import { router as authRouter } from './routes/auth.js'
 import { router as communityRouter } from './routes/community.js'
 import { router as profileRouter } from './routes/profiles.js'
 import { router as teamRouter } from './routes/teams.js'
-// import { router as pokemonRouter } from './routes/pokemons.js'
 
 // create the express app
 const app = express()
@@ -66,7 +65,6 @@ app.use(passUserToView);
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/community', communityRouter)
-// app.use('/pokemons', pokemonRouter)
 app.use('/teams', teamRouter)
 app.use('/profiles', profileRouter)
 

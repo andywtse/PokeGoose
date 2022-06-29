@@ -1,0 +1,22 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1>
+    <%= title %>
+  </h1>
+
+  <section class="section-container">
+    <form id="new-team-form" action="/teams/<%= team._id %>?_method=PUT" method="POST">
+      <section class="section-container box-title-desc">
+        <label for="title-input">Title:</label>
+        <input type="text" name="title" id="input-title" value="<%= team.title %>">
+        <label for="title-input">Description:</label>
+        <input type="text" name="description" id="input-title" value="<%= team.description %>">
+        <button type="submit">Save Team Description</button>
+      </section>
+    </form>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>
