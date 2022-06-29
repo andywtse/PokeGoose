@@ -21,9 +21,6 @@ function index(req, res) {
               myTeams = profile.myTeams;
             }
 
-            console.log(favorites)
-            console.log(myTeams)
-
             res.render('index', {
               user: req.user,
               allTeams: teams,

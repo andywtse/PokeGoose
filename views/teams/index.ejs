@@ -19,9 +19,9 @@
                 <% }) %>
               </h6>
               <p class="card-text">
-                <%= myFavorite.description %> 
+                <%= favorite.description %> 
               </p>
-              <form action="/teams/<%= favorite._id %>?_method=DELETE" method="post">
+              <form action="/teams/<%= favorite._id %>/favorites?_method=DELETE" method="post">
                 <button class="btn btn-primary">Remove</button>
               </form>
             </div>

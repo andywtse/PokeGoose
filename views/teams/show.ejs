@@ -13,9 +13,15 @@
             <button>Edit Team Description</button>
           </a>
         <% }  else if (user) { %>
-          <form action="/teams/<%= team._id%>/favorites?_method=PATCH" method="POST">
-            <button>Add to Favorites</button>
-          </form>
+          <% if( myProfile.favorites.some(item => item._id.equals(team._id)) ) { %>
+            <form action="/teams/<%= team._id %>/favorites?_method=DELETE" method="post">
+              <button class="btn btn-primary">Remove from Favorites</button>
+            </form>
+          <% } else {%>
+            <form action="/teams/<%= team._id%>/favorites?_method=PATCH" method="POST">
+              <button>Add to Favorites</button>
+            </form>
+          <% } %>
         <% } %>
         <% if (!isSelf && profile.avatar) { %>
           <div>
