@@ -14,6 +14,8 @@ function index(req, res) {
     .populate('myTeams')
     .then(profile => {
 
+      console.log(profile)
+
       if (typeof profile.favorites !== 'undefined') {
         favorites = profile.favorites;
       }
@@ -179,32 +181,24 @@ function deletePokemon(req,res) {
   });
 }
 
-// function scrapePokemon() {
-//   for (let i = 0; i < 1154; i++) {
-//     axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-//       .then(response => {
-//         req.body.name = response.data.name
-//         req.body.icon = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${i}.png?raw=true`
-//         let arrayMoves = []
-//         response.data.moves.forEach(move => {
-//           arrayMoves.push(move.move.name)
-//         });
-//         req.body.moves = arrayMoves
-//         Pokemon.create(req.body)
-//           .then(pokemon => {
-//             res.redirect('/teams')
-//           })
-//           .catch(err => {
-//             console.log(err)
-//             indexController.index;
-//           })
-//       })
-//       .catch(err => {
-//         console.log(err)
-//         indexController.index;
-//       })
-//   }
-// }
+function addToFavorites(req,res){
+  Profile.findById(req.user.profile._id)
+  .then(profile=>{
+    profile.favorites.push(req.params.id)
+    profile.save()
+    .then(()=>{
+      res.redirect(`/teams/${req.params.id}`);
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    indexController.index;
+  });
+};
+
+function removeFromFavorites(req,res){
+
+};
 
 export {
   index,
@@ -214,6 +208,8 @@ export {
   show,
   edit,
   update,
+  addToFavorites,
+  removeFromFavorites,
   deleteTeam as delete,
   deletePokemon
 }

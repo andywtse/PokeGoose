@@ -30,6 +30,7 @@
     </div>
   </section>
 
+  <% if (loggedIn) { %> 
   <section class="section-container box2">
     <h2> My Favorites </h2>
     <% if (favorites.length !== 0 ) { %> 
@@ -83,6 +84,7 @@
     <% } %>
     </div>
   </section>
+  <% } %>
 </main>
 
 <%- include('./partials/footer') %>

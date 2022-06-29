@@ -13,9 +13,9 @@
             <button>Edit Team Description</button>
           </a>
         <% }  else if (user) { %>
-          <a href="/teams/<%= team._id %>/">
+          <form action="/teams/<%= team._id%>/favorites?_method=PATCH" method="POST">
             <button>Add to Favorites</button>
-          </a>
+          </form>
         <% } %>
         <% if (!isSelf && profile.avatar) { %>
           <div>

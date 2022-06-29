@@ -25,11 +25,17 @@ router.post('/:id/pokemons', isLoggedIn, teamController.createPokemon);
 // PUT pokegoose.herokuapp.com/teams
 router.put('/:id', isLoggedIn, teamController.update);
 
+// PUT pokegoose.herokuapp.com/teams
+router.patch('/:id/favorites', isLoggedIn, teamController.addToFavorites);
+
 // DELETE pokegoose.herokuapp.com/teams/:id
 router.delete('/:id', isLoggedIn, teamController.delete);
 
 // DELETE pokegoose.herokuapp.com/teams/:id
 router.delete('/:id/pokemons/:pokemonId', isLoggedIn, teamController.deletePokemon);
+
+// DELETE pokegoose.herokuapp.com/teams/:id/favorites
+router.delete('/:id/favorites', isLoggedIn, teamController.removeFromFavorites);
 
 
 
