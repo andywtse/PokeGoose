@@ -1,4 +1,5 @@
 import { Team } from "../models/team.js";
+import * as indexController from "./index.js"
 
 function index(req, res) {
   Team.find({})
@@ -11,7 +12,7 @@ function index(req, res) {
     })
     .catch(err => {
       console.log(err)
-      res.redirect('/')
+      indexController.index;
     });
 };
 
@@ -26,7 +27,7 @@ function show(req, res) {
     })
     .catch(err => {
       console.log(err)
-      res.redirect('/')
+      indexController.index;
     });
 };
 

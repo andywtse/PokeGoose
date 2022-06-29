@@ -4,10 +4,14 @@
 </head>
 <body>
   <nav>
+    <div class="nav-left">
     <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>> Home</a>
     <a href="/community" <%- title === 'Community' ? 'class="active"' : '' %>> Community</a>
     <a href="/teams" <%- title === 'Teams' ? 'class="active"' : '' %>> Teams</a>
+    </div>
+    <div class="nav-right">
     <% if (user) { %>
+      <a href="/profiles" <%- title === 'Profile' ? 'class="active"' : '' %>> Profile</a>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
@@ -18,4 +22,5 @@
         </button>
       </a>
     <% } %>
+    </div>
   </nav>

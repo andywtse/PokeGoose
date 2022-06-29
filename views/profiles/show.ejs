@@ -14,13 +14,13 @@
       </div>
       <h3><%= profile.name %> </h3>
       <div>
-        <p><%= profile.description %></p>
+        <p><%=profile.description%></p>
       </div>
     <% } %>
   </section>
   <section class="section-container p-box-2">
     <div>
-      <h1>Your Teams</h1>
+      <h1><% isSelf ? 'Your Teams' : 'Their Teams'%></h1>
       <% if (hasTeams) { %> 
       <div class="card-container">
         <% profile.myTeams.forEach(team => { %>
