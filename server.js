@@ -60,6 +60,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(passUserToView);
+app.use('/public', express.static('public'));
 
 // router middleware
 app.use('/', indexRouter)
