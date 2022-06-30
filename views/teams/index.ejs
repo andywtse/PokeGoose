@@ -3,14 +3,21 @@
 
 <main>
   <section class="section-container">
-    <h2>My Favorites</h2>
+    <div class="box-bar">
+      <h2 class="header-inline-block">My Favorites</h2>
+    </div>
     <% if (myFavorites.length !== 0 ) { %> 
     <div class="d-flex align-content-stretch flex-wrap overflow-auto">
       <% myFavorites.forEach(favorite => { %>
         <a href="/teams/<%= favorite._id %>">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title"><%= favorite.title %> </h5>
+              <h5 class="card-title">
+                <%= favorite.title %> 
+                <form action="/teams/<%= favorite._id %>/favorites?_method=DELETE" method="post">
+                  <button class="btn btn btn-danger">Remove</button>
+                </form>
+              </h5>
               <h6 class="card-subtitle mb-2 text-muted">
                 <% favorite.pokemon?.forEach(pokemon => { %>
                   <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
@@ -19,9 +26,7 @@
               <p class="card-text">
                 <%= favorite.description %> 
               </p>
-              <form action="/teams/<%= favorite._id %>/favorites?_method=DELETE" method="post">
-                <button class="btn btn-primary">Remove</button>
-              </form>
+              
             </div>
           </div>
         </a>
@@ -35,9 +40,9 @@
   <section class="section-container">
     
     <div class="box-bar">
-      <h2>My Teams</h2>
+      <h2 class="header-inline-block">My Teams</h2>
       <a href="/teams/new">
-        <button>Create Team</button>
+        <button class="btn btn-primary btn-create-team">Create Team</button>
       </a>
     </div>
     
@@ -47,7 +52,12 @@
         <a href="/teams/<%= team._id %>">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title"><%= team.title %> </h5>
+              <h5 class="card-title">
+                <%= team.title %>
+                <form action="/teams/<%= team._id %>?_method=DELETE" method="post">
+                  <button class="btn btn btn-danger">Remove</button>
+                </form>
+              </h5>
               <h6 class="card-subtitle mb-2 text-muted">
                 <% team.pokemon?.forEach(pokemon => { %>
                   <img class="img-icon" src="<%= pokemon.icon%>" alt="<%= pokemon.name %>">
@@ -56,9 +66,6 @@
               <p class="card-text">
                 <%= myTeam.description %> 
               </p>
-              <form action="/teams/<%= team._id %>?_method=DELETE" method="post">
-                <button class="btn btn-primary">Remove</button>
-              </form>
             </div>
           </div>
         </a>
