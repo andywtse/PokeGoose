@@ -7,12 +7,23 @@ function index(req, res) {
   let myTeams=[];
 
   Team.find({})
+  .populate('pokemon')
     .then(teams => {
       const loggedIn = (typeof req.user !== 'undefined');
       if(loggedIn) {
         Profile.findById(req.user.profile._id)
         .populate('favorites')
+        .populate({
+          path: 'favorites',
+          populate: { 
+            path:'pokemon',
+            model:'CustomPokemon' }})
         .populate('myTeams')
+          .populate({
+            path: 'myTeams',
+            populate: { 
+              path:'pokemon',
+              model:'CustomPokemon' }})
           .then(profile => {
             if( typeof profile.favorites !== 'undefined' ) {
               favorites = profile.favorites;

@@ -3,11 +3,11 @@ import * as indexController from "./index.js"
 
 function index(req, res) {
   Team.find({})
+  .populate('pokemon')
     .then(teams => {
       res.render('community/index', {
         teams,
-        title: "Community",
-        pokemons: teams.pokemons
+        title: "Community"
       });
     })
     .catch(err => {
@@ -18,6 +18,7 @@ function index(req, res) {
 
 function show(req, res) {
   Team.findById(req.params.id)
+  .populate('pokemon')
     .then(team => {
       res.render(`teams/${req.params.id}`, {
         title: team.title,
