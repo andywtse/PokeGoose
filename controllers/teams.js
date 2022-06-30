@@ -79,6 +79,9 @@ function createPokemon(req, res) {
   Pokemon.find({ name: req.body.name })
     .then(poke => {
       req.body.icon = poke[0].icon;
+      if(req.body.moves) {
+        req.body.moves = req.body.moves.split(', ');
+      }
       CustomPokemon.create(req.body)
         .then(pokemon => {
           Team.findById(req.params.id)
