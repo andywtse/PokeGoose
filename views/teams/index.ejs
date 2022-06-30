@@ -15,7 +15,7 @@
               <h5 class="card-title box-bar">
                 <%= favorite.title %> 
                 <form action="/teams/<%= favorite._id %>/favorites?_method=DELETE" method="post">
-                  <button class="btn btn btn-danger">Remove</button>
+                  <button class="btn btn btn-danger btn-cards">Remove</button>
                 </form>
               </h5>
               <h6 class="card-subtitle mb-2 text-muted">
@@ -39,10 +39,10 @@
   
   <section class="section-container">
     
-    <div class="box-bar">
-      <h2 class="header-inline-block">My Teams</h2>
-      <a href="/teams/new">
-        <button class="btn btn-primary btn-create-team">Create Team</button>
+    <div>
+      <h2 class="box-bar">My Teams</h2>
+      <a class="box-bar" href="/teams/new">
+        <button class="btn btn-primary btn-update">Create Team</button>
       </a>
     </div>
     
@@ -55,7 +55,7 @@
               <h5 class="card-title box-bar">
                 <%= team.title %>
                 <form action="/teams/<%= team._id %>?_method=DELETE" method="post">
-                  <button class="btn btn btn-danger">Remove</button>
+                  <button class="btn btn btn-danger btn-cards">Remove</button>
                 </form>
               </h5>
               <h6 class="card-subtitle mb-2 text-muted">

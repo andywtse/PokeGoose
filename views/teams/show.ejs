@@ -5,26 +5,9 @@
   <h1><%= title %> </h1>
 
   <section class="section-container">
-      <section class="section-container box-title-desc">
-        <h3><%= team.title %> </h3>
-        <h5><%= team.description %> </h>
-        <% if (isSelf) { %>
-          <a href="/teams/<%= team._id %>/edit">
-            <button>Edit Team Description</button>
-          </a>
-        <% }  else if (user) { %>
-          <% if( myProfile.favorites.some(item => item._id.equals(team._id)) ) { %>
-            <form action="/teams/<%= team._id %>/favorites?_method=DELETE" method="post">
-              <button class="btn btn-primary">Remove from Favorites</button>
-            </form>
-          <% } else {%>
-            <form action="/teams/<%= team._id%>/favorites?_method=PATCH" method="POST">
-              <button>Add to Favorites</button>
-            </form>
-          <% } %>
-        <% } %>
+      <section class="box-title-desc">
         <% if (!isSelf && profile.avatar) { %>
-          <div>
+          <div class="box-bar">
             <a href="/profiles/<%= team.owner %>">
               <img
               class="profile-avatar"
@@ -34,15 +17,61 @@
             </a>
           </div>
         <% } %>
+        <h3 class="box-bar p-on-black-color h3-name"><%= team.title %> 
+        <% if (isSelf) { %>
+          <a href="/teams/<%= team._id %>/edit">
+            <button class="btn btn-primary btn-update">Edit Team Description</button>
+          </a>
+        <% }  else if (user) { %>
+          <% if( myProfile.favorites.some(item => item._id.equals(team._id)) ) { %>
+            <form action="/teams/<%= team._id %>/favorites?_method=DELETE" method="post">
+              <button class="btn btn-danger btn-update">Remove from Favorites</button>
+            </form>
+          <% } else {%>
+            <form action="/teams/<%= team._id%>/favorites?_method=PATCH" method="POST">
+              <button class="btn btn-primary btn-update">Add to Favorites</button>
+            </form>
+          <% } %>
+        <% } %>
+        
+        </h3>
+        <h5 class="p-on-black-color p-on-black-size"><%= team.description %> </h>
       </section>
-      <section class="section-container box-pokemon">
+      <section class="section-container">
+        <% if (isSelf && pokemons.length < 6) { %>
+          <section class="section-container">
+            <form id="new-team-form" action="/teams/<%= team._id %>/pokemons" method="POST">
+              <section class="box-title-desc">
+        
+                <label for="pokemon-name-select" class="form-label">Pokemon:</label>
+                <input name="name" class="form-control" id="pokemon-name-select" list="pokemon-name-dlo" placeholder="Type to search..." autocomplete="off">
+                <datalist id="pokemon-name-dlo">
+                  <% list.forEach(pokemon=> { %>
+                    <option value="<%= pokemon.name %>">
+                      <% }) %>
+                </datalist>
+        
+                <label for="pokemon-moves-input" class="form-label">Moves:</label>
+                <input type="text" name="moves" id="pokemon-moves-input"
+                  placeholder="Enter up to 4 moves separated by commas (,)"autocomplete="off">
+              </section>
+              <button type="submit" class="btn btn-primary btn-update">Add Pokemon</button>
+            </form>
+          </section>
+        <% } %>
           <% if (pokemons.length !== 0 ) { %>
-          <div class="card-container">
+            <div class="d-flex align-content-stretch flex-wrap overflow-auto">
             <% pokemons.forEach(pokemon => { %>
                 <div class="card" style="width: 18rem;">
                   <img class="card-img-top" src="<%= pokemon.icon %>" alt="Card image cap">
                   <div class="card-body overflow-auto">
-                    <h5 class="card-title"><%= pokemon.name %> </h5>
+                    <h5 class="card-title box-bar"><%= pokemon.name %>
+                      <% if (isSelf) { %>
+                        <form action="/teams/<%= team._id %>/pokemons/<%= pokemon._id%>?_method=DELETE" method="post">
+                          <button class="btn btn-danger btn-cards">Remove</button>
+                        </form>
+                        <% } %> 
+                    </h5>
                     <h6 class="card-subtitle mb-2 text-muted">
                       <ul>
                       <% pokemon.moves.forEach(move => { %>
@@ -50,11 +79,6 @@
                       <% }) %>
                     </ul>
                     </h6>
-                    <% if (isSelf) { %>
-                    <form action="/teams/<%= team._id %>/pokemons/<%= pokemon._id%>?_method=DELETE" method="post">
-                      <button class="btn btn-primary">Remove</button>
-                    </form>
-                    <% } %>
                   </div>
                 </div>
             <% }) %>
@@ -62,27 +86,6 @@
             <p class="p-on-black-color"> There are currently no items </p>
           <% } %>
           </div>
-          <% if (isSelf && pokemons.length < 6) { %>
-            <section class="section-container">
-              <form id="new-team-form" action="/teams/<%= team._id %>/pokemons" method="POST">
-                <section class="section-container box-pokemon">
-          
-                  <label for="pokemon-name-select" class="form-label">Pokemon:</label>
-                  <input name="name" class="form-control" id="pokemon-name-select" list="pokemon-name-dlo" placeholder="Type to search..." autocomplete="off">
-                  <datalist id="pokemon-name-dlo">
-                    <% list.forEach(pokemon=> { %>
-                      <option value="<%= pokemon.name %>">
-                        <% }) %>
-                  </datalist>
-          
-                  <label for="pokemon-moves-input" class="form-label">Moves:</label>
-                  <input type="text" name="moves" id="pokemon-moves-input"
-                    placeholder="Enter up to 4 moves separated by commas (,) autocomplete="off"">
-                </section>
-                <button type="submit">Add Pokemon</button>
-              </form>
-            </section>
-          <% } %>
       </section>
     </form>
   </section>
