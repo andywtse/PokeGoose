@@ -4,7 +4,15 @@
 
 PokeGoose is a web application for users to build their best and favorite Pokemon team composition.
 
-- Application Screenshots here
+<img width="600" alt="Home Page" src="https://i.imgur.com/JSr5DWX.png">
+
+<br>
+
+<img width="600" alt="Community Page" src="https://i.imgur.com/waMGsub.png">
+
+<br>
+
+<img width="600" alt="Team page" src="https://i.imgur.com/VK75kOD.png">
 
 ---
 
@@ -17,13 +25,11 @@ PokeGoose is a web application for users to build their best and favorite Pokemo
 
 ### [Wireframe](https://whimsical.com/sei-wireframe-unit-2-diagram-9HF4LYZ9a67EzJ5Ua5ihZA)
 
-<img width="600" alt="Trello Board" src="https://i.imgur.com/Ya84ipE.png">
-
-<img width="600" alt="Trello Board" src="https://i.imgur.com/5AN8UKI.png">
+<img width="600" alt="Wireframe" src="https://i.imgur.com/Ya84ipE.png">
 
 ### [Entity Relationship Diagram](https://whimsical.com/sei-wireframe-unit-2-erd-NpbSFYVaz6ZFAspSHQtGfC)
 
-<img width="600" alt="Trello Board" src="https://i.imgur.com/Ot0feq6.png">
+<img width="600" alt="ERD" src="https://i.imgur.com/Ot0feq6.png">
 
 ---
 
