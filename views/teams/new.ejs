@@ -2,18 +2,18 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1>
+  <h1 box-bar>
     <%= title %>
   </h1>
 
   <section class="section-container">
     <form id="new-team-form" action="/teams" method="POST">
-      <section class="section-container box-title-desc">
-        <label for="title-input">Title:</label>
-        <input type="text" name="title" id="input-title" placeholder="Enter a title...">
-        <label for="title-input">Description:</label>
-        <input type="text" name="description" id="input-title" placeholder="Enter a description...">
-        <button type="submit">Create Team</button>
+      <section class="box-title-desc">
+          <label for="title-input">Title:</label>
+          <input type="text" name="title" id="input-title" placeholder="Enter a title..." autocomplete="off">
+          <label for="desc-input">Description:</label>
+          <textarea style="width:300px;height:150px" name="description" id="desc-input" placeholder="Enter a description..." autocomplete="off"></textarea>
+        <button type="submit" class="btn btn-primary">Create Team</button>
       </section>
     </form>
   </section>

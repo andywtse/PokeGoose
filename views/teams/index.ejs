@@ -11,8 +11,8 @@
       <% myFavorites.forEach(favorite => { %>
         <a href="/teams/<%= favorite._id %>">
           <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">
+            <div class="card-body overflow-auto">
+              <h5 class="card-title box-bar">
                 <%= favorite.title %> 
                 <form action="/teams/<%= favorite._id %>/favorites?_method=DELETE" method="post">
                   <button class="btn btn btn-danger">Remove</button>
@@ -51,8 +51,8 @@
       <% myTeam.forEach(team => { %>
         <a href="/teams/<%= team._id %>">
           <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">
+            <div class="card-body overflow-auto">
+              <h5 class="card-title box-bar">
                 <%= team.title %>
                 <form action="/teams/<%= team._id %>?_method=DELETE" method="post">
                   <button class="btn btn btn-danger">Remove</button>
@@ -64,7 +64,7 @@
                 <% }) %>
               </h6>
               <p class="card-text">
-                <%= myTeam.description %> 
+                <%= team.description %> 
               </p>
             </div>
           </div>

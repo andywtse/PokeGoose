@@ -10,9 +10,9 @@
     <form id="new-team-form" action="/teams/<%= team._id %>?_method=PUT" method="POST">
       <section class="section-container box-title-desc">
         <label for="title-input">Title:</label>
-        <input type="text" name="title" id="input-title" value="<%= team.title %>">
+        <input type="text" name="title" id="input-title" value="<%= team.title %>" autocomplete="off">
         <label for="title-input">Description:</label>
-        <input type="text" name="description" id="input-title" value="<%= team.description %>">
+        <input type="text" name="description" id="input-title" value="<%= team.description %>" autocomplete="off">
         <button type="submit">Save Team Description</button>
       </section>
     </form>

@@ -118,6 +118,7 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
 }
 
 .btn-create-team {
@@ -127,3 +128,28 @@ p {
 .header-inline-block {
   display: inline-block;
 }
+
+.box-title-desc {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  font-size: 30px;
+  margin: 2rem 2rem;
+}
+
+.box-title-desc > button{
+  align-self: center;
+  font-size: 25px;
+  margin: 2rem 2rem;
+}
+
+.box-title-desc > input, .box-title-desc > textarea{
+  font-size: 20px;
+}
+
+label{
+  color: #CBB0C1;
+}
+
+
+
