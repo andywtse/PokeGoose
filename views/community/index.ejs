@@ -1,33 +1,39 @@
 <%- include('../partials/html-head') %>
-<%- include('../partials/nav') %>
+  <%- include('../partials/nav') %>
 
-<main>
-  <section class="section-container">
-    <h1><%= title %> </h1>
-    <% if (teams.length !== 0 ) { %> 
-    <div class="card-container">
-      <% teams.forEach(team => { %>
-        <a href="/teams/<%= team._id %>">
-          <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title"><%= team.title %> </h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                <% team.pokemon?.forEach(pokemon => { %>
-                  <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
+    <main>
+      <section class="box-container">
+        <h1>
+          <%= title %>
+        </h1>
+        <div>
+          <% if (teams.length !==0 ) { %>
+            <div class="d-flex align-content-stretch flex-wrap overflow-auto">
+              <% teams.forEach(team=> { %>
+                <a href="/teams/<%= team._id %>">
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-body overflow-auto">
+                      <h5 class="card-title">
+                        <%= team.title %>
+                      </h5>
+                      <h6 class="card-subtitle mb-2 text-muted">
+                        <% team.pokemon?.forEach(pokemon=> { %>
+                          <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
+                          <% }) %>
+                      </h6>
+                      <p class="card-text">
+                        <%= team.description %>
+                      </p>
+                    </div>
+                  </div>
+                </a>
                 <% }) %>
-              </h6>
-              <p class="card-text">
-                <%= team.description %> 
-              </p>
+                  <% } else { %>
+                    <p class="p-on-black-color"> There are currently no items </p>
+                    <% } %>
             </div>
-          </div>
-        </a>
-      <% }) %>
-    <% } else { %>
-      <p> There are currently no items </p>
-    <% } %>
-    </div>
-  </section>
-</main>
+        </div>
+      </section>
+    </main>
 
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer') %>

@@ -2,12 +2,10 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1><%= title %> </h1>
-
-  <section class="section-container t-box1">
+  <section class="section-container">
     <h2>My Favorites</h2>
     <% if (myFavorites.length !== 0 ) { %> 
-    <div class="card-container">
+    <div class="d-flex align-content-stretch flex-wrap overflow-auto">
       <% myFavorites.forEach(favorite => { %>
         <a href="/teams/<%= favorite._id %>">
           <div class="card" style="width: 18rem;">
@@ -29,12 +27,12 @@
         </a>
       <% }) %>
     <% } else { %>
-      <p> You currently have no favorites. Try favoriting some teams! </p>
+      <p class="p-on-black-color"> You currently have no favorites. Try favoriting some teams! </p>
     <% } %>
     </div>
   </section>
   
-  <section class="section-container t-box-2">
+  <section class="section-container">
     
     <div class="box-bar">
       <h2>My Teams</h2>
@@ -44,7 +42,7 @@
     </div>
     
     <% if (myTeam.length !== 0 ) { %> 
-    <div class="card-container">
+    <div class="d-flex align-content-stretch flex-wrap overflow-auto">
       <% myTeam.forEach(team => { %>
         <a href="/teams/<%= team._id %>">
           <div class="card" style="width: 18rem;">
@@ -66,7 +64,7 @@
         </a>
       <% }) %>
     <% } else { %>
-      <p> You currently have no teams. Let's make one! </p>
+      <p class="p-on-black-color"> You currently have no teams. Let's make one! </p>
     <% } %>
     </div>
   </section>

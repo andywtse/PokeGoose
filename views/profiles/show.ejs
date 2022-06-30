@@ -3,30 +3,29 @@
 
 <main>
   <section class="section-container p-box-1">
-    <h1><%= title %> </h1>
     <% if (profile.avatar) { %>
-      <div>
+      <div class="profile-avatar">
           <img
           class="profile-avatar"
           src="<%= profile.avatar %>"
           alt="<%= profile.name %>'s avatar"
         >
       </div>
-      <h3><%= profile.name %> </h3>
+      <h3 class="p-on-black-color h3-name"><%= profile.name %> </h3>
       <div>
-        <p><%=profile.description%></p>
+        <p class="p-on-black-color"><%=profile.description%></p>
       </div>
     <% } %>
   </section>
   <section class="section-container p-box-2">
     <div>
-      <h1><% isSelf ? 'Your Teams' : 'Their Teams'%></h1>
+      <h1>Their Teams</h1>
       <% if (hasTeams) { %> 
       <div class="card-container">
         <% profile.myTeams.forEach(team => { %>
           <a href="/teams/<%= team._id %>">
             <div class="card" style="width: 18rem;">
-              <div class="card-body">
+              <div class="card-body overflow-auto">
                 <h5 class="card-title"><%= team.title %> </h5>
                 <h6 class="card-subtitle mb-2 text-muted">
                   <% team.pokemon?.forEach(pokemon => { %>

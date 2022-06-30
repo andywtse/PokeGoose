@@ -1,63 +1,64 @@
 <%- include('./partials/html-head') %>
   <%- include('./partials/nav') %>
 
-    <main class="box">
-      <div class="container">
-        <section>
-          <% if (allTeams.length !==0 ) { %>
-            <div id="carouselInterval" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner" style="height:150px;">
-                <% for ( let i=0; i < allTeams.length; i++ ){ %>
-                  <div class="<%= i === 0 ? " carousel-item active": "carousel-item" %>" data-bs-interval="5000">
-                    <div class="cards-wrapper">
-                      <a href="/teams/<%= allTeams[i]._id %>">
-                        <div class="card  border-info mb-3" style="width: 24rem;font-size:24px;">
-                          <div class="card-body">
-                            <h4 class="card-title">
-                              <%= allTeams[i].title %>
-                            </h4>
-                            <h6 class="card-subtitle mb-2 text-muted">
-                              <% allTeams[i].pokemon?.forEach(pokemon=> { %>
-                                <img class="img-icon" src="<%= pokemon.icon%>" alt="<%= pokemon.name %>">
-                                <% }) %>
-                            </h6>
-                            <p class="card-text">
-                              <%= allTeams[i].description %>
-                            </p>
+    <main>
+      <div class="box-container">
+        <div class="container">
+          <section>
+            <% if (allTeams.length !==0 ) { %>
+              <div id="carouselInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" style="height:150px;">
+                  <% for ( let i=0; i < allTeams.length; i++ ){ %>
+                    <div class="<%= i === 0 ? " carousel-item active": "carousel-item" %>" data-bs-interval="5000">
+                      <div class="cards-wrapper">
+                        <a href="/teams/<%= allTeams[i]._id %>">
+                          <div class="card  border-info mb-3" style="width: 30rem;font-size:24px;">
+                            <div class="card-body overflow-auto">
+                              <h4 class="card-title">
+                                <%= allTeams[i].title %>
+                              </h4>
+                              <h6 class="card-subtitle mb-2 text-muted">
+                                <% allTeams[i].pokemon?.forEach(pokemon=> { %>
+                                  <img class="img-icon" src="<%= pokemon.icon%>" alt="<%= pokemon.name %>">
+                                  <% }) %>
+                              </h6>
+                              <p class="card-text">
+                                <%= allTeams[i].description %>
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </a>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <% } %>
+                    <% } %>
 
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselInterval"
+                  data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselInterval"
+                  data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselInterval"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselInterval"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-            <% } else { %>
-              <p> There is currently no items </p>
-              <% } %>
-      </div>
-      </section>
-      <div class="box-container-2 d-flex justify-content-evenly"">
-        <% if (loggedIn) { %>
-          <div class="section-container"">
+              <% } else { %>
+                <p class="p-on-black-color"> There is currently no items </p>
+                <% } %>
+        </div>
+        </section>
+        <div class="d-flex flex-column bd-highlight overflow-auto">
+          <% if (loggedIn) { %>
+            <div class="section-container"">
           <h2> My Favorites </h2>
           <% if (favorites.length !==0 ) { %>
-            <div class="card-container">
+            <div class=" d-flex align-content-stretch flex-wrap overflow-auto">
               <% favorites.forEach(team=> { %>
                 <a href="/teams/<%= team._id %>">
                   <div class="card" style="width: 18rem;">
-                    <div class="card-body">
+                    <div class="card-body overflow-auto">
                       <h5 class="card-title">
                         <%= team.title %>
                       </h5>
@@ -74,40 +75,41 @@
                 </a>
                 <% }) %>
                   <% } else { %>
-                    <p> There are currently no items </p>
+                    <p class="p-on-black-color"> There are currently no items </p>
                     <% } %>
             </div>
-          </div>
-          <div class="section-container"">
+        </div>
+        <div class="section-container"">
             <h2> My Teams </h2>
             <% if (myTeams.length !==0 ) { %>
-              <div class="card-container">
-                <% myTeams.forEach(team=> { %>
-                  <a href="/teams/<%= team._id %>">
-                    <div class="card" style="width: 18rem;">
-                      <div class="card-body">
-                        <h4 class="card-title">
-                          <%= team.title %>
-                        </h4>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                          <% team.pokemon?.forEach(pokemon=> { %>
-                            <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
-                            <% }) %>
-                        </h6>
-                        <p class="card-text">
-                          <%= team.description %>
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                  <% }) %>
-                    <% } else { %>
-                      <p> There are currently no items </p>
-                      <% } %>
+              <div class=" d-flex align-content-stretch flex-wrap overflow-auto">
+          <% myTeams.forEach(team=> { %>
+            <a href="/teams/<%= team._id %>">
+              <div class="card" style="width: 18rem;">
+                <div class="card-body overflow-auto">
+                  <h4 class="card-title">
+                    <%= team.title %>
+                  </h4>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    <% team.pokemon?.forEach(pokemon=> { %>
+                      <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
+                      <% }) %>
+                  </h6>
+                  <p class="card-text">
+                    <%= team.description %>
+                  </p>
+                </div>
               </div>
-              </section>
-              <% } %>
-          </div>
+            </a>
+            <% }) %>
+              <% } else { %>
+                <p class="p-on-black-color"> There are currently no items </p>
+                <% } %>
+        </div>
+        </section>
+        <% } %>
+      </div>
+      </div>
       </div>
       </div>
     </main>
