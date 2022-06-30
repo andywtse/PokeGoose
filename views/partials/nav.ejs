@@ -3,24 +3,34 @@
   <% } %>
 </head>
 <body>
-  <nav>
-    <div class="nav-left">
-    <a href="/" <%- title === 'Home' ? 'class="active"' : '' %>> Home</a>
-    <a href="/community" <%- title === 'Community' ? 'class="active"' : '' %>> Community</a>
-    <a href="/teams" <%- title === 'Teams' ? 'class="active"' : '' %>> Teams</a>
-    </div>
-    <div class="nav-right">
-    <% if (user) { %>
-      <a href="/profiles" <%- title === 'Profile' ? 'class="active"' : '' %>> Profile</a>
-      <a href="/auth/logout">
-        <button type="submit">Logout</button>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="/assets/pokeball-pokemon.svg" alt="" width="30" height="24">
       </a>
-    <% } else { %>
-      <a href="/auth/google" class="siwg-link">
-        <button type="submit" class="siwg">
-          <img id="siwg-image" alt="Sign in with Google" />
-        </button>
-      </a>
-    <% } %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link <%- title === 'Home' ? 'active' : '' %>" href="/">Home</a>
+          <a class="nav-link <%- title === 'Community' ? 'active' : '' %>" href="/community">Community</a>
+          <a class="nav-link <%- title === 'Teams' ? 'active' : '' %>" href="/teams">Teams</a>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <% if (user) { %>
+            <a href="/profiles" class="nav-link"> Profile</a>
+            <a href="/auth/logout" class="nav-link">
+              <button class="btn btn-outline-success me-2" type="button">Logout</button>
+            </a>
+          <% } else { %>
+            <a href="/auth/google" class="nav-link siwg-link">
+              <button type="submit" class="btn btn-sm btn-outline-secondary siwg">
+                <img id="siwg-image" alt="Sign in with Google" />
+              </button>
+            </a>
+          <% } %>
+        </div>
+      </div>
     </div>
   </nav>
