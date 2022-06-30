@@ -4,8 +4,6 @@
 
 PokeGoose is a web application for users to build their best and favorite Pokemon team composition.
 
-Powered by [PokeAPI](https://pokeapi.co/)
-
 - Application Screenshots here
 
 ---
@@ -15,17 +13,17 @@ Powered by [PokeAPI](https://pokeapi.co/)
 
 ### [Trello Board](https://trello.com/b/bXOqQEX9/sei-unit-2-project)
 
-![Trello](https://i.imgur.com/PBB8Du1.png)
+<img width="600" alt="Trello Board" src="https://i.imgur.com/PBB8Du1.png">
 
 ### [Wireframe](https://whimsical.com/sei-wireframe-unit-2-diagram-9HF4LYZ9a67EzJ5Ua5ihZA)
 
-![Wireframe](https://i.imgur.com/Ya84ipE.png)
+<img width="600" alt="Trello Board" src="https://i.imgur.com/Ya84ipE.png">
 
-![Wireframe](https://i.imgur.com/5AN8UKI.png)
+<img width="600" alt="Trello Board" src="https://i.imgur.com/5AN8UKI.png">
 
 ### [Entity Relationship Diagram](https://whimsical.com/sei-wireframe-unit-2-erd-NpbSFYVaz6ZFAspSHQtGfC)
 
-![ERD](https://i.imgur.com/Ot0feq6.png)
+<img width="600" alt="Trello Board" src="https://i.imgur.com/Ot0feq6.png">
 
 ---
 
