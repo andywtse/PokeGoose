@@ -10,7 +10,7 @@
     <div class="d-flex align-content-stretch flex-wrap overflow-auto">
       <% myFavorites.forEach(favorite => { %>
         <a href="/teams/<%= favorite._id %>">
-          <div class="card" style="width: 18rem;">
+          <div class="card">
             <div class="card-body overflow-auto">
               <h5 class="card-title box-bar">
                 <%= favorite.title %> 
@@ -50,7 +50,7 @@
     <div class="d-flex align-content-stretch flex-wrap overflow-auto">
       <% myTeam.forEach(team => { %>
         <a href="/teams/<%= team._id %>">
-          <div class="card" style="width: 18rem;">
+          <div class="card">
             <div class="card-body overflow-auto">
               <h5 class="card-title box-bar">
                 <%= team.title %>

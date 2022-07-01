@@ -18,7 +18,6 @@ import('./config/passport.js')
 // require routes
 import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
-import { router as communityRouter } from './routes/community.js'
 import { router as profileRouter } from './routes/profiles.js'
 import { router as teamRouter } from './routes/teams.js'
 
@@ -65,7 +64,6 @@ app.use('/public', express.static('public'));
 // router middleware
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
-app.use('/community', communityRouter)
 app.use('/teams', teamRouter)
 app.use('/profiles', profileRouter)
 

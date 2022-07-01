@@ -125,7 +125,7 @@ function show(req, res) {
                       profile,
                       myProfile,
                       isSelf,
-                      user
+                      isUser:user
                     })
                   })
                 } else {

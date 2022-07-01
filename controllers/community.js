@@ -2,11 +2,11 @@ import { Team } from "../models/team.js";
 import * as indexController from "./index.js"
 
 function index(req, res) {
-  Team.find({})
+  Profile.find({})
   .populate('pokemon')
-    .then(teams => {
+    .then(profile => {
       res.render('community/index', {
-        teams,
+        profile,
         title: "Community"
       });
     })
@@ -22,8 +22,7 @@ function show(req, res) {
     .then(team => {
       res.render(`teams/${req.params.id}`, {
         title: team.title,
-        team,
-        pokemons: team.pokemons
+        team
       })
     })
     .catch(err => {

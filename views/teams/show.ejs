@@ -4,7 +4,7 @@
 <main>
   <h1><%= title %> </h1>
 
-  <section class="section-container">
+  <section class="section-container overflow-auto">
       <section class="box-title-desc">
         <% if (!isSelf && profile.avatar) { %>
           <div class="box-bar">
@@ -22,7 +22,7 @@
           <a href="/teams/<%= team._id %>/edit">
             <button class="btn btn-primary btn-update">Edit Team Description</button>
           </a>
-        <% }  else if (user) { %>
+        <% }  else if (isUser) { %>
           <% if( myProfile.favorites.some(item => item._id.equals(team._id)) ) { %>
             <form action="/teams/<%= team._id %>/favorites?_method=DELETE" method="post">
               <button class="btn btn-danger btn-update">Remove from Favorites</button>
@@ -62,7 +62,7 @@
           <% if (pokemons.length !== 0 ) { %>
             <div class="d-flex align-content-stretch flex-wrap overflow-auto">
             <% pokemons.forEach(pokemon => { %>
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                   <img class="card-img-top" src="<%= pokemon.icon %>" alt="Card image cap">
                   <div class="card-body overflow-auto">
                     <h5 class="card-title box-bar"><%= pokemon.name %>

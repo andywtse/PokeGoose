@@ -50,3 +50,7 @@ PokeGoose is a web application for users to build their best and favorite Pokemo
 - Equip items for pokemons
 - Adjust stat distribution for pokemon
 - Comments and Replies
+
+Gallery:
+- [Planning Screenshots](https://imgur.com/a/3qjxpM7)
+- [Application Screenshots](https://imgur.com/a/v01PVec)

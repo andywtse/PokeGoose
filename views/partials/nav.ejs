@@ -14,12 +14,12 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-link <%- title === 'Home' ? 'active' : '' %>" href="/">Home</a>
-          <a class="nav-link <%- title === 'Community' ? 'active' : '' %>" href="/community">Community</a>
+          <a class="nav-link <%- title === 'Community' ? 'active' : '' %>" href="/profiles">Community</a>
           <a class="nav-link <%- title === 'Teams' ? 'active' : '' %>" href="/teams">Teams</a>
         </div>
         <div class="navbar-nav ms-auto">
           <% if (user) { %>
-            <a href="/profiles" class="nav-link"> Profile</a>
+            <a href="/profiles/<%= user.profile._id %>" class="nav-link"> Profile</a>
             <a href="/auth/logout" class="nav-link">
               <button class="btn btn-outline-success me-2" type="button">Logout</button>
             </a>
