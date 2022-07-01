@@ -4,11 +4,7 @@
 
 PokeGoose is a web application for users to build their best and favorite Pokemon team composition.
 
-<img width="600" alt="Home Page" src="https://i.imgur.com/JSr5DWX.png">
-
-<br>
-
-<img width="600" alt="Community Page" src="https://i.imgur.com/waMGsub.png">
+<img width="600" alt="Home Page" src="https://i.imgur.com/T14ywSO.png">
 
 <br>
 

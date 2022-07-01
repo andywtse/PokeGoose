@@ -20,7 +20,7 @@
   <section class="section-container">
     <div>
     <div class="box-bar">
-      <h1>Their Teams</h1>
+      <h1><%= isSelf ? 'Your Team' : 'Their Team' %> </h1>
     </div>
       <% if (hasTeams) { %> 
       <div class="d-flex align-content-stretch flex-wrap overflow-auto">
