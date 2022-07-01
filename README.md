@@ -31,10 +31,14 @@ PokeGoose is a web application for users to build their best and favorite Pokemo
 
 ## Technologies
 
-
+ - Javascript
+ - HTML & CSS
+ - Google OAuth
  - MongoDB
  - Express
  - NodeJS
+ - Heroku
+ - Bootstrap
 
 ---
 
