@@ -10,18 +10,22 @@ function index(req, res) {
   let myTeams = [];
 
   Profile.findById(req.user.profile._id)
-  .populate('favorites')
+    .populate('favorites')
     .populate({
       path: 'favorites',
-      populate: { 
-        path:'pokemon',
-        model:'CustomPokemon' }})
-  .populate('myTeams')
+      populate: {
+        path: 'pokemon',
+        model: 'CustomPokemon'
+      }
+    })
+    .populate('myTeams')
     .populate({
       path: 'myTeams',
-      populate: { 
-        path:'pokemon',
-        model:'CustomPokemon' }})
+      populate: {
+        path: 'pokemon',
+        model: 'CustomPokemon'
+      }
+    })
     .then(profile => {
 
       if (typeof profile.favorites !== 'undefined') {
@@ -79,7 +83,7 @@ function createPokemon(req, res) {
   Pokemon.find({ name: req.body.name })
     .then(poke => {
       req.body.icon = poke[0].icon;
-      if(req.body.moves) {
+      if (req.body.moves) {
         req.body.moves = req.body.moves.split(', ');
       }
       CustomPokemon.create(req.body)
@@ -115,7 +119,7 @@ function show(req, res) {
             .then(list => {
               if (user) {
                 Profile.findById(req.user.profile._id)
-                .populate('favorites')
+                  .populate('favorites')
                   .then(myProfile => {
                     res.render('teams/show', {
                       title: "Team Detail",
@@ -125,10 +129,10 @@ function show(req, res) {
                       profile,
                       myProfile,
                       isSelf,
-                      isUser:user
+                      isUser: user
                     })
                   })
-                } else {
+              } else {
                 res.render('teams/show', {
                   title: "Team Detail",
                   team,
@@ -136,7 +140,7 @@ function show(req, res) {
                   list,
                   profile,
                   isSelf,
-                  isUser:user
+                  isUser: user
                 })
               }
             })

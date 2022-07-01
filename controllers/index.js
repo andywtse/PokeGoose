@@ -3,32 +3,36 @@ import { Profile } from "../models/profile.js";
 
 function index(req, res) {
 
-  let favorites=[];
-  let myTeams=[];
+  let favorites = [];
+  let myTeams = [];
 
   Team.find({})
-  .populate('pokemon')
+    .populate('pokemon')
     .then(teams => {
       const loggedIn = (typeof req.user !== 'undefined');
-      if(loggedIn) {
+      if (loggedIn) {
         Profile.findById(req.user.profile._id)
-        .populate('favorites')
-        .populate({
-          path: 'favorites',
-          populate: { 
-            path:'pokemon',
-            model:'CustomPokemon' }})
-        .populate('myTeams')
+          .populate('favorites')
+          .populate({
+            path: 'favorites',
+            populate: {
+              path: 'pokemon',
+              model: 'CustomPokemon'
+            }
+          })
+          .populate('myTeams')
           .populate({
             path: 'myTeams',
-            populate: { 
-              path:'pokemon',
-              model:'CustomPokemon' }})
+            populate: {
+              path: 'pokemon',
+              model: 'CustomPokemon'
+            }
+          })
           .then(profile => {
-            if( typeof profile.favorites !== 'undefined' ) {
+            if (typeof profile.favorites !== 'undefined') {
               favorites = profile.favorites;
             }
-            if( typeof profile.myTeams !== 'undefined' ) {
+            if (typeof profile.myTeams !== 'undefined') {
               myTeams = profile.myTeams;
             }
 

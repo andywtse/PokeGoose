@@ -1,7 +1,7 @@
 import { Profile } from "../models/profile.js";
 import * as indexController from "./index.js"
 
-function index(req,res) {
+function index(req, res) {
   Profile.find({}).sort('name')
     .populate('myTeams')
     .then(profiles => {
@@ -19,27 +19,29 @@ function index(req,res) {
     });
 };
 
-function show(req,res) {
+function show(req, res) {
   Profile.findById(req.params.id)
     .populate('myTeams')
     .populate({
       path: 'myTeams',
-      populate: { 
-        path:'pokemon',
-        model:'CustomPokemon' }})
+      populate: {
+        path: 'pokemon',
+        model: 'CustomPokemon'
+      }
+    })
     .then(profile => {
       let hasTeams = typeof profile.myTeams !== 'undefined'
       const isSelf = (profile._id) === (req.user.profile._id)
-      if(hasTeams && profile.myTeams.length === 0) {
-        hasTeams=false;
+      if (hasTeams && profile.myTeams.length === 0) {
+        hasTeams = false;
       }
-      if( isSelf ) {
-        index(req,res);
+      if (isSelf) {
+        index(req, res);
       } else {
         res.render('profiles/show', {
           title: "Profile",
           profile,
-          teams:profile.myTeams,
+          teams: profile.myTeams,
           hasTeams,
           isSelf
         });

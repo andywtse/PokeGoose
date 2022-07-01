@@ -48,39 +48,39 @@
       </div>
     <div class="box-bar"></div>
     <div class="d-flex flex-column bd-highlight overflow-auto">
-  <% if (loggedIn) { %>
-    <div class="section-container"">
-      <h2> My Favorites </h2>
-      <% if (favorites.length !==0 ) { %>
-      <div class=" d-flex align-content-stretch flex-wrap overflow-auto">
-      <% favorites.forEach(team=> { %>
-        <a href="/teams/<%= team._id %>">
-          <div class="card">
-            <div class="card-body overflow-auto">
-              <h5 class="card-title">
-                <%= team.title %>
-              </h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                <% team.pokemon?.forEach(pokemon=> { %>
-                  <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
-                  <% }) %>
-              </h6>
-              <p class="card-text">
-                <%= team.description %>
-              </p>
+    <% if (loggedIn) { %>
+      <div class="section-container"">
+        <h2> My Favorites </h2>
+        <% if (favorites.length !==0 ) { %>
+        <div class=" d-flex align-content-stretch flex-wrap overflow-auto">
+        <% favorites.forEach(team=> { %>
+          <a href="/teams/<%= team._id %>">
+            <div class="card">
+              <div class="card-body overflow-auto">
+                <h5 class="card-title">
+                  <%= team.title %>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <% team.pokemon?.forEach(pokemon=> { %>
+                    <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
+                    <% }) %>
+                </h6>
+                <p class="card-text">
+                  <%= team.description %>
+                </p>
+              </div>
             </div>
-          </div>
-        </a>
-      <% }) %>
-      <% } else { %>
-        <p class="p-on-black-color"> There are currently no items </p>
-      <% } %>
-          </div>
-      </div>
-    <div class="section-container"">
-      <h2> My Teams </h2>
-      <% if (myTeams.length !==0 ) { %>
-      <div class=" d-flex align-content-stretch flex-wrap overflow-auto">
+          </a>
+        <% }) %>
+        <% } else { %>
+          <p class="p-on-black-color"> There are currently no items </p>
+        <% } %>
+            </div>
+        </div>
+      <div class="section-container"">
+        <h2> My Teams </h2>
+        <% if (myTeams.length !==0 ) { %>
+        <div class=" d-flex align-content-stretch flex-wrap overflow-auto">
         <% myTeams.forEach(team=> { %>
           <a href="/teams/<%= team._id %>">
             <div class="card">
@@ -99,15 +99,14 @@
               </div>
             </div>
           </a>
-          <% }) %>
+        <% }) %>
         <% } else { %>
           <p class="p-on-black-color"> There are currently no items </p>
         <% } %>
       </div>
     </div>
-  </section>
-  <section class="section-container">
-    <div>
+    </section>
+    <section class="section-container">
       <h2> All Teams </h2>
       <% if (allTeams.length !==0 ) { %>
         <div class="d-flex align-content-stretch flex-wrap overflow-auto">
@@ -129,45 +128,46 @@
                 </div>
               </div>
             </a>
-            <% }) %>
-              <% } else { %>
-                <p class="p-on-black-color"> There are currently no items </p>
-                <% } %>
+          <% }) %>
+        <% } else { %>
+          <p class="p-on-black-color"> There are currently no items </p>
+        <% } %>
+      </div>
+    </section>
+    <% } else { %>
+      <section class="box-container">
+        <div>
+          <h2> All Teams </h2>
+          <% if (allTeams.length !==0 ) { %>
+            <div class="d-flex align-content-stretch flex-wrap overflow-auto">
+              <% allTeams.forEach(team=> { %>
+                <a href="/teams/<%= team._id %>">
+                  <div class="card"">
+                    <div class="card-body overflow-auto">
+                      <h5 class="card-title">
+                        <%= team.title %>
+                      </h5>
+                      <h6 class="card-subtitle mb-2 text-muted">
+                        <% team.pokemon?.forEach(pokemon=> { %>
+                          <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
+                          <% }) %>
+                      </h6>
+                      <p class="card-text">
+                        <%= team.description %>
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <% }) %>
+                  <% } else { %>
+                    <p class="p-on-black-color"> There are currently no items </p>
+                    <% } %>
+            </div>
         </div>
+      </section>
+    <% } %>
     </div>
-  </section>
-<% } else { %>
-  <section class="box-container">
-    <div>
-      <h2> All Teams </h2>
-      <% if (allTeams.length !==0 ) { %>
-        <div class="d-flex align-content-stretch flex-wrap overflow-auto">
-          <% allTeams.forEach(team=> { %>
-            <a href="/teams/<%= team._id %>">
-              <div class="card"">
-                <div class="card-body overflow-auto">
-                  <h5 class="card-title">
-                    <%= team.title %>
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
-                    <% team.pokemon?.forEach(pokemon=> { %>
-                      <img class="img-icon" src="<%= pokemon.icon %>" alt="<%= pokemon.name %>">
-                      <% }) %>
-                  </h6>
-                  <p class="card-text">
-                    <%= team.description %>
-                  </p>
-                </div>
-              </div>
-            </a>
-            <% }) %>
-              <% } else { %>
-                <p class="p-on-black-color"> There are currently no items </p>
-                <% } %>
-        </div>
-    </div>
-  </section>
-<% } %>
+  </div>
 </main>
 
 <%- include('./partials/footer') %>
