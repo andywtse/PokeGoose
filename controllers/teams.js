@@ -136,7 +136,7 @@ function show(req, res) {
                   list,
                   profile,
                   isSelf,
-                  user
+                  isUser:user
                 })
               }
             })

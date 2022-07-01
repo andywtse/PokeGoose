@@ -62,8 +62,8 @@
           <% if (pokemons.length !== 0 ) { %>
             <div class="d-flex align-content-stretch flex-wrap overflow-auto">
             <% pokemons.forEach(pokemon => { %>
-                <div class="card">
-                  <img class="card-img-top" src="<%= pokemon.icon %>" alt="Card image cap">
+                <div class="card" style="max-height:60rem;">
+                  <img class="card-img-top mx-auto" src="<%= pokemon.icon %>" alt="Card image cap">
                   <div class="card-body overflow-auto">
                     <h5 class="card-title box-bar"><%= pokemon.name %>
                       <% if (isSelf) { %>
@@ -73,7 +73,7 @@
                         <% } %> 
                     </h5>
                     <h6 class="card-subtitle mb-2 text-muted">
-                      <ul>
+                      <ul class="p-on-black-size">
                       <% pokemon.moves.forEach(move => { %>
                         <li><%= move %> </li>
                       <% }) %>

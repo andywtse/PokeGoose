@@ -121,8 +121,8 @@ p {
 
 .card-p {
   margin: 1rem;
-  width:22rem;
-  max-height:30rem;
+  width:18rem;
+  max-height:26rem;
 }
 
 .profile-avatar {
@@ -182,8 +182,8 @@ textarea {
 }
 
 .card-img-top {
-  max-width: 22rem;
-  max-height: 22rem;
+  max-width: 18rem;
+  max-height: 18rem;
 }
 
 .card-title {
